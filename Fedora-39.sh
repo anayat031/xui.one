@@ -10,6 +10,47 @@ echo "Detected : $OS  $VER  $ARCH"
 dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm
 dnf -y install --nogpgcheck https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %rhel).rpm
 
+
+
+
+
+
+
+
+cat > /etc/yum.repos.d/mariadb.repo <<EOF
+[mariadb]
+name=MariaDB RPM source
+baseurl=https://mariadb.mirror.digitalpacific.com.au/yum/10.6/fedora/$VER/x86_64/
+enabled=1
+gpgcheck=0
+EOF
+	enablerepo() {
+		dnf config-manager --set-enabled $1
+	}
+	
+enablerepo fedora-cisco-openh264
+enablerepo fedora
+enablerepo updates
+enablerepo mariadb
+enablerepo rpmfusion-free
+enablerepo rpmfusion-free-updates
+enablerepo rpmfusion-nonfree
+enablerepo rpmfusion-nonfree-updates
+enablerepo remi
+enablerepo remi-safe
+dnf -y install wget
+	yumpurge() {
+	for package in $@
+	do
+		echo "removing config files for $package"
+		for file in $(rpm -q --configfiles $package)
+		do
+			echo "  removing $file"
+			rm -f $file
+		done
+		rpm -e $package
+	done
+	}
 dnf -y install MariaDB-server
 cd /root
 wget https://github.com/jua74470/xui.one/raw/refs/heads/master/php74.spec -O php74.spec
