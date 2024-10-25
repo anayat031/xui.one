@@ -151,21 +151,23 @@ if __name__ == "__main__":
     # CONFIGURE                                      #
     ##################################################
     
-    printc("Configuring System")
+    printc("Configuring fstab")
     if not "/home/xui/" in open("/etc/fstab").read():
         rFile = io.open("/etc/fstab", "a", encoding="utf-8")
         rFile.write("\ntmpfs /home/xui/content/streams tmpfs defaults,noatime,nosuid,nodev,noexec,mode=1777,size=90% 0 0\ntmpfs /home/xui/tmp tmpfs defaults,noatime,nosuid,nodev,noexec,mode=1777,size=6G 0 0")
         rFile.close()
+    printc("Configuring Service")
     if os.path.exists("/etc/init.d/xuione"): os.remove("/etc/init.d/xuione")
     if os.path.exists("/etc/systemd/system/xui.service"): os.remove("/etc/systemd/system/xui.service")
     if not os.path.exists("/etc/systemd/system/xuione.service"):
         rFile = io.open("/etc/systemd/system/xuione.service", "w", encoding="utf-8")
         rFile.write(rSystemd)
         rFile.close()
-        os.system("sudo chmod +x /etc/systemd/system/xuione.service  >/dev/null 2>&1")
-        os.system("sudo systemctl daemon-reload  >/dev/null 2>&1")
-        os.system("sudo systemctl enable xuione  >/dev/null 2>&1")
-        os.system("sudo modprobe ip_conntrack  >/dev/null 2>&1")
+        os.system("sudo chmod +x /etc/systemd/system/xuione.service")
+    printc("Configuring System")
+        os.system("sudo systemctl daemon-reload")
+        os.system("sudo systemctl enable xuione")
+        os.system("sudo modprobe ip_conntrack")
         rFile = io.open("/etc/sysctl.conf", "w", encoding="utf-8")
         rFile.write(rSysCtl)
         rFile.close()
