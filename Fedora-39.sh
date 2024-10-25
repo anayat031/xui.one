@@ -9,6 +9,8 @@ ARCH=$(uname -m)
 echo "Detected : $OS  $VER  $ARCH"
 dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm
 dnf -y install --nogpgcheck https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %rhel).rpm
+
+dnf -y install MariaDB-server
 cd /root
 wget https://github.com/jua74470/xui.one/raw/refs/heads/master/php74.spec -O php74.spec
 dnf -y remove libcurl-devel
