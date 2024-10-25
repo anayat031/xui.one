@@ -9,14 +9,6 @@ ARCH=$(uname -m)
 echo "Detected : $OS  $VER  $ARCH"
 dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm
 dnf -y install --nogpgcheck https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %rhel).rpm
-
-
-
-
-
-
-
-
 cat > /etc/yum.repos.d/mariadb.repo <<EOF
 [mariadb]
 name=MariaDB RPM source
