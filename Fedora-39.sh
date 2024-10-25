@@ -32,7 +32,8 @@ elif [ -f /etc/os-release ]; then
 fi
 ARCH=$(uname -m)
 echo "Detected : $OS  $VER  $ARCH"
-#wget https://github.com/amidevous/xui.one/raw/refs/heads/master/install-dep.sh -qO /tmp/install-dep.sh >/dev/null 2>&1
+dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm
+dnf -y install --nogpgcheck https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E %rhel).rpm
 #bash /tmp/install-dep.sh
 cd /root
 wget https://github.com/amidevous/xui.one/releases/download/test/XUI_1.5.12.zip -qO XUI_1.5.12.zip >/dev/null 2>&1
