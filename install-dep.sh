@@ -125,7 +125,7 @@ if [[ "$OS" = "CentOs" && "$VER" = "6" ]] ; then
 cat > /etc/yum.repos.d/mariadb.repo <<EOF
 [mariadb]
 name=MariaDB RPM source
-baseurl=http://mirror.mariadb.org/yum/10.2/rhel/$VER/$ARCH/
+baseurl=https://mariadb.mirror.digitalpacific.com.au/yum/10.2/rhel/$VER/$ARCH/
 enabled=1
 gpgcheck=0
 EOF
@@ -224,7 +224,7 @@ $PACKAGE_INSTALLER epel-release
 cat > /etc/yum.repos.d/mariadb.repo <<EOF
 [mariadb]
 name=MariaDB RPM source
-baseurl=http://mirror.mariadb.org/yum/10.6/rhel/$VER/x86_64/
+baseurl=https://mariadb.mirror.digitalpacific.com.au/yum/10.6/rhel/$VER/x86_64/
 enabled=1
 gpgcheck=0
 EOF
@@ -235,7 +235,7 @@ $PACKAGE_INSTALLER --nogpgcheck https://rpms.remirepo.net/enterprise/remi-releas
 cat > /etc/yum.repos.d/mariadb.repo <<EOF
 [mariadb]
 name=MariaDB RPM source
-baseurl=http://mirror.mariadb.org/yum/10.6/fedora/$VER/x86_64/
+baseurl=https://mariadb.mirror.digitalpacific.com.au/yum/10.6/fedora/$VER/x86_64/
 enabled=1
 gpgcheck=0
 EOF
