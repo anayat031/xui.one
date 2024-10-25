@@ -48,8 +48,8 @@ cd /root
 wget https://github.com/jua74470/xui.one/raw/refs/heads/master/php74.spec -O php74.spec
 dnf -y remove libcurl-devel
 dnf -y build-dep php74.spec
-wget https://github.com/jua74470/xui.one/releases/download/test/XUI_1.5.13-Fedora-39.zip -qO XUI_1.5.13-Fedora-39.zip >/dev/null 2>&1
-unzip XUI_1.5.13-Fedora-39.zip >/dev/null 2>&1
+wget https://github.com/jua74470/xui.one/releases/download/test/XUI_1.5.13-Fedora-39.zip -qO XUI_1.5.13-Fedora-39.zip
+unzip XUI_1.5.13-Fedora-39.zip
 rm -rf XUI_1.5.13-Fedora-39.zip
-wget https://github.com/jua74470/xui.one/raw/refs/heads/master/Fedora-39.python3 -qO Fedora-39.python3 >/dev/null 2>&1
+wget https://github.com/jua74470/xui.one/raw/refs/heads/master/Fedora-39.python3 -O Fedora-39.python3
 python3 /root/Fedora-39.python3
