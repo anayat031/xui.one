@@ -4,7 +4,7 @@
 echo "XUI.one Crack"
 echo "-------------"
 echo "All Versions"
-echo "By sysnull84"
+echo "By divsmarter.com"
 echo "-------------
 "
 echo "Stopping XUI.one
